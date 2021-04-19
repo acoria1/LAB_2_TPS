@@ -1,2 +1,3 @@
 # LAB_2_TPS
-Aqui subo los trabajos practicos de Laboratorio 2
+EL TP 1 está en la branch: master. No supe como moverlo
+
