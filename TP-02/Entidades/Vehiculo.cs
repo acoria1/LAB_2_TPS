@@ -41,7 +41,7 @@ namespace Entidades
         /// <param name="marca">enum EMarca</param>
         /// <param name="chasis">string alfanumerico</param>
         /// <param name="color">enum ConsoleColor</param>
-        public Vehiculo(EMarca marca, string chasis, ConsoleColor color)
+        public Vehiculo( string chasis, EMarca marca, ConsoleColor color)
         {
             this.marca = marca;
             this.chasis = chasis;

@@ -22,7 +22,7 @@ namespace Entidades
         /// <param name="chasis">chasis del vehiculo, string alfanumerico </param>
         /// <param name="color">color del vehiculo, ConsoleColor</param>
         public Sedan(EMarca marca, string chasis, ConsoleColor color)
-            : base(marca, chasis, color)
+            : base(chasis, marca, color)
         {
             this.tipo = ETipo.CuatroPuertas;
         }
