@@ -1,0 +1,10 @@
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\Fabrica de Muebles\Prueba en Consola\bin\Debug\Prueba en Consola.exe.config
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\Fabrica de Muebles\Prueba en Consola\bin\Debug\Prueba en Consola.exe
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\Fabrica de Muebles\Prueba en Consola\bin\Debug\Prueba en Consola.pdb
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\Fabrica de Muebles\Prueba en Consola\obj\Debug\Prueba en Consola.csprojAssemblyReference.cache
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\Fabrica de Muebles\Prueba en Consola\obj\Debug\Prueba en Consola.csproj.CoreCompileInputs.cache
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\Fabrica de Muebles\Prueba en Consola\obj\Debug\Prueba en Consola.exe
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\Fabrica de Muebles\Prueba en Consola\obj\Debug\Prueba en Consola.pdb
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\Fabrica de Muebles\Prueba en Consola\bin\Debug\Entidades.dll
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\Fabrica de Muebles\Prueba en Consola\bin\Debug\Entidades.pdb
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\Fabrica de Muebles\Prueba en Consola\obj\Debug\Prueba en Consola.csproj.CopyComplete
