@@ -34,3 +34,21 @@ C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4_Fabrica de Muebles\FormularioF
 C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4_Fabrica de Muebles\FormularioFabrica\obj\Debug\FormularioFabrica.csproj.CopyComplete
 C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4_Fabrica de Muebles\FormularioFabrica\obj\Debug\FormularioFabrica.exe
 C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4_Fabrica de Muebles\FormularioFabrica\obj\Debug\FormularioFabrica.pdb
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\bin\Debug\FormularioFabrica.exe.config
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\bin\Debug\FormularioFabrica.exe
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\bin\Debug\FormularioFabrica.pdb
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\bin\Debug\Entidades.dll
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\bin\Debug\Entidades.pdb
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\obj\Debug\FormularioFabrica.csprojAssemblyReference.cache
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\obj\Debug\FormularioFabrica.FrmAgregarMateriales.resources
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\obj\Debug\FormularioFabrica.FrmHistorialDeEnvios.resources
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\obj\Debug\FormularioFabrica.FrmModelos.resources
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\obj\Debug\FormularioFabrica.FrmNuevoModelo.resources
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\obj\Debug\FormularioFabrica.FormPrincipal.resources
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\obj\Debug\FormularioFabrica.FrmNuevoMueble.resources
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\obj\Debug\FormularioFabrica.Properties.Resources.resources
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\obj\Debug\FormularioFabrica.csproj.GenerateResource.cache
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\obj\Debug\FormularioFabrica.csproj.CoreCompileInputs.cache
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\obj\Debug\FormularioFabrica.csproj.CopyComplete
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\obj\Debug\FormularioFabrica.exe
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\FormularioFabrica\obj\Debug\FormularioFabrica.pdb

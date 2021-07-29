@@ -20,6 +20,11 @@ namespace Entidades.Muebles
             command.Connection = conexion;
         }
 
+        /// <summary>
+        /// Consigue la información del modelo que corresponde al mueble recibido desde la base de datos
+        /// </summary>
+        /// <param name="m">mueble del cual queremos información</param>
+        /// <returns></returns>
         public static string GetDetalleMueble(Mueble m)
         {
             StringBuilder sb = new StringBuilder();
@@ -53,6 +58,12 @@ namespace Entidades.Muebles
             }
         }
 
+        /// <summary>
+        /// Consigue todos los muebles desde la base de datos. columna y orden a elejir por usuario
+        /// </summary>
+        /// <param name="orderColumn">columna a ordenar por</param>
+        /// <param name="ascending">tipo de orden. true para ascending, false descending</param>
+        /// <returns></returns>
         public static DataSet GetMueblesFromDB(string orderColumn, bool ascending)
         {
             string order = "DESC";
@@ -90,6 +101,10 @@ namespace Entidades.Muebles
             return ds;
         }
 
+        /// <summary>
+        /// Cuenta la cantidad de muebles en la base de datos.
+        /// </summary>
+        /// <returns></returns>
         public static int GetCountMuebles()
         {
             int i = -1;
@@ -119,6 +134,10 @@ namespace Entidades.Muebles
             return i;
         }
 
+        /// <summary>
+        /// Inserta un mueble en la base de datos
+        /// </summary>
+        /// <param name="m">mueble a insertar</param>
         public static void Insert(Mueble m)
         {
             command.CommandText = "INSERT INTO Mueble" +
@@ -127,10 +146,13 @@ namespace Entidades.Muebles
             command.Parameters.AddWithValue("@Guid", m.CodigoGuid.ToString());
             command.Parameters.AddWithValue("@IdModelo", m.IDModelo);
             command.Parameters.AddWithValue("@FechaDeFabricacion", m.FechaDeFabricacion);
-            command.Parameters.AddWithValue("@Color", m.Color.ToString());
+            command.Parameters.AddWithValue("@Color", m.ColorString);
             Ejecutar();
         }
 
+        /// <summary>
+        /// Ejecuta una sentencia SQL que no conste de una selección.
+        /// </summary>
         public static void Ejecutar()
         {
             try

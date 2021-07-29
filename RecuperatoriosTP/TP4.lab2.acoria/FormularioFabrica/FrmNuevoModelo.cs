@@ -45,7 +45,7 @@ namespace FormularioFabrica
                 box = new CheckBox();
                 box.Name = "cb" + item.ToString();
                 box.Tag = i;
-                box.Text = item.ToString();
+                box.Text = item.ToString().Replace('_', ' ');
                 box.AutoSize = true;
                 box.Location = new Point(400, 40 + i * 25);
                 box.CheckedChanged += CheckBox_CheckedChanged;
@@ -55,11 +55,17 @@ namespace FormularioFabrica
             this.cmbClaseDeMueble.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Evento que se produce al clickear alguna de las checkbox de colores.
+        /// Los agrega o quita del atributo "coloresSeleccionados"
+        /// </summary>
+        /// <param name="sender">checkbox de color </param>
+        /// <param name="e"></param>
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {            
             foreach (EColor color in Enum.GetValues(typeof(EColor)))
             {
-                if (this.ActiveControl.Text == color.ToString())
+                if (this.ActiveControl.Text == color.ToString().Replace('_', ' '))
                 {
                     if (this.coloresSeleccionados.Contains(color))
                     {

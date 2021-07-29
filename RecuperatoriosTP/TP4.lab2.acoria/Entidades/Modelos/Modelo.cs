@@ -300,12 +300,12 @@ namespace Entidades.Modelos
             sb.Append("Colores disponibles:\n");
             foreach (EColor item in this.coloresDisponibles)
             {
-                sb.Append(item + ", ");
+                sb.Append(item.ToString().Replace('_',' ') + ", ");
             }
             sb = new StringBuilder(sb.ToString().Trim().Trim(','));
             sb.AppendLine
-                ($"\nancho:                         {this.dimensiones.ancho} cm," +
-                $" \nalto:                          {this.dimensiones.alto} cm," +
+                ($"\nancho:                         {this.dimensiones.ancho} cm" +
+                $" \nalto:                          {this.dimensiones.alto} cm" +
                 $" \nprofundidad:                   {this.dimensiones.profundidad} cm\n");
             sb.AppendLine("Materiales necesarios:");
             foreach (Material item in this.materialesNecesarios)

@@ -87,7 +87,10 @@ namespace FormularioFabrica
         {
             try
             {
-                this.rtxbMuebleDetails.Text = MuebleDAO.GetDetalleMueble((Mueble)this.bsStockMuebles.Current);
+                if (this.bsStockMuebles.Count > 0)
+                {
+                    this.rtxbMuebleDetails.Text = MuebleDAO.GetDetalleMueble((Mueble)this.bsStockMuebles.Current);
+                }
             }
             catch (Exception)
             {
@@ -140,42 +143,40 @@ namespace FormularioFabrica
         private void btnFabricar_Click(object sender, EventArgs e)
         {
             FrmNuevoMueble frmNuevoMueble = new FrmNuevoMueble(this.miFabrica.modelosDisponibles.Values.ToList());
-            frmNuevoMueble.fabriqueNuevoMueble += AgregarAQueueDeProduccion;
+            frmNuevoMueble.fabriqueNuevosMuebles += AgregarAQueueDeProduccion;
             frmNuevoMueble.avisoFormClosing += AbortThread;
             this.nuevoMuebleThread = new Thread(frmNuevoMueble.ShowDialogNoReturn);
             this.nuevoMuebleThread.Start();    
         }
 
-        public void AgregarAQueueDeProduccion(Mueble m)
+        public void AgregarAQueueDeProduccion(Mueble m,short cantidad)
         {
             if (this.InvokeRequired)
             {
-                FabriqueNuevoMueble fnm = new FabriqueNuevoMueble(AgregarAQueueDeProduccion);
-                object[] objs = new object[] { m };
+                FabriqueNuevosMuebles fnm = new FabriqueNuevosMuebles(AgregarAQueueDeProduccion);
+                object[] objs = new object[] { m , cantidad };
                 this.Invoke(fnm, objs);
             }
             else
             {
                 List<Material> materialesSinStockDeModelo;
-                if (this.miFabrica.FabricarMueble(m, out materialesSinStockDeModelo))
+                double[] pesosDiff;
+                if (this.miFabrica.FabricarMueblesEnBatch(m,cantidad, out materialesSinStockDeModelo, out pesosDiff))
                 {
                     this.bsMateriales.DataSource = miFabrica.stockMateriales.Values.ToList();
                     this.bsMueblesProduccion.DataSource = miFabrica.mueblesEnProduccion.ToList();
                 } else if (materialesSinStockDeModelo.Count > 0)
                 {
                     StringBuilder sb = new StringBuilder();
-                    double diferencia;
-                    // Por cada material necesario del modelo que no puedo fabricar,
-                    // calculo la diferencia de pesos entre lo que necesito y lo que hay
-                    // en stock. 
-                    // Informa cuanto necesito agregar a mi fábrica de cada material.
+                    //// Informa cuanto necesito agregar a mi fábrica de cada material.
+                    int i = 0;
                     foreach (Material item in materialesSinStockDeModelo)
-                    {
-                        diferencia = item.PesoEnKG - this.miFabrica.GetPesoDeMaterialEnFabrica(item);
-                        sb.AppendLine($"{item.Key}: faltan {diferencia}kgs.");
+                    {                    
+                        sb.AppendLine($"{item.Key}: faltan {pesosDiff[i].ToString()}kgs.");
+                        i++;
                     }
-                    MessageBox.Show(sb.ToString(),"STOCK INSUFICIENTE",
-                        MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    MessageBox.Show(sb.ToString(), "STOCK INSUFICIENTE",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }               
             }          
         }
@@ -206,7 +207,7 @@ namespace FormularioFabrica
                 Mueble currentMueble;
                 if (this.miFabrica.mueblesEnProduccion.TryPeek(out currentMueble))
                 {
-                    currentMueble.Estado = EEstadoMueble.EnProduccion;
+                    currentMueble.Estado = EEstadoMueble.En_Produccion;
                     this.bsMueblesProduccion.DataSource = miFabrica.mueblesEnProduccion.ToList();
                 }
             }

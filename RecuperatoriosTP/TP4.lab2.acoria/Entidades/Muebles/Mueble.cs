@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entidades.Modelos;
 using Entidades.Excepciones;
+using System.Xml.Serialization;
 
 namespace Entidades.Muebles
 {
@@ -44,7 +45,7 @@ namespace Entidades.Muebles
             {
                 throw new ExceptionColorInvalido("Color inválido para el modelo indicado");
             }
-            this.estado = EEstadoMueble.EsperandoFabricacion;
+            this.estado = EEstadoMueble.Esperando_Fabricacion;
         }
 
         public Mueble(Modelo modelo, DateTime fecha) : this(modelo,fecha,EColor.Natural)
@@ -87,6 +88,14 @@ namespace Entidades.Muebles
             }
         }
 
+        public string ColorString
+        {
+            get
+            {
+                return this.color.ToString().Replace('_', ' ');
+            }
+        }
+
         public DateTime FechaDeFabricacion
         {
             get
@@ -108,6 +117,15 @@ namespace Entidades.Muebles
             set
             {
                 this.estado = value;
+            }
+        }
+
+        [XmlIgnoreAttribute]
+        public string EstadoString
+        {
+            get
+            {
+                return this.estado.ToString().Replace('_', ' ');
             }
         }
 

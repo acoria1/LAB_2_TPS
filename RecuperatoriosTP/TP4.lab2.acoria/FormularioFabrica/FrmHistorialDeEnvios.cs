@@ -26,12 +26,12 @@ namespace FormularioFabrica
 
         private void FrmHistorialDeEnvios_Load(object sender, EventArgs e)
         {           
-            dataGridView1.ReadOnly = true;
-            dataGridView1.DataSource = MuebleDAO.GetMueblesFromDB("FechaDeEnvio",true).Tables[0];
-            int c = dataGridView1.Columns.Count;
+            dgvHistorialEnvios.ReadOnly = true;
+            dgvHistorialEnvios.DataSource = MuebleDAO.GetMueblesFromDB("FechaDeEnvio",true).Tables[0];            
+            int c = dgvHistorialEnvios.Columns.Count;
             for (int i = 0; i < c; i++)
             {
-                this.cmbOrderBy.Items.Add(dataGridView1.Columns[i].HeaderText);
+                this.cmbOrderBy.Items.Add(dgvHistorialEnvios.Columns[i].HeaderText);
             }
             this.cmbOrderBy.SelectedIndex = 0;
             this.cmbOrderType.SelectedIndex = 0;
@@ -52,13 +52,13 @@ namespace FormularioFabrica
         private void btnOrdenar_Click(object sender, EventArgs e)
         {
             bool ascending = false;
-            if (cmbOrderType.Text == "Ascending")
+            if (cmbOrderType.Text == "Ascendiente")
             {
                 ascending = true;
             }
             try
             {
-                dataGridView1.DataSource = MuebleDAO.GetMueblesFromDB(cmbOrderBy.Text, ascending).Tables[0];
+                dgvHistorialEnvios.DataSource = MuebleDAO.GetMueblesFromDB(cmbOrderBy.Text, ascending).Tables[0];
 
             }
             catch (Exception)
@@ -76,11 +76,11 @@ namespace FormularioFabrica
                 this.Invoke(av, objs);
             } else
             {
-                if (MessageBox.Show(text + "Ok para refrescar vista", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (MessageBox.Show(text + "\nPresionar Ok para refrescar vista", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     try
                     {
-                        dataGridView1.DataSource = MuebleDAO.GetMueblesFromDB(cmbOrderBy.Text, true).Tables[0];
+                        dgvHistorialEnvios.DataSource = MuebleDAO.GetMueblesFromDB(cmbOrderBy.Text, true).Tables[0];
                         myThread.Abort();
                         Entidades.TablaMueblesListener myListener = new Entidades.TablaMueblesListener();
                         myListener.dataBaseChanged += avisoCambioBD;
@@ -102,6 +102,11 @@ namespace FormularioFabrica
                 this.cerrandoForm.Invoke();
             }
             myThread.Abort();
+        }
+
+        private void cmbOrderType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

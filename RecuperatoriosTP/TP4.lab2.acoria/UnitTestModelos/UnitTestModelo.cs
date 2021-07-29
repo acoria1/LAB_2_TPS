@@ -57,10 +57,10 @@ namespace UnitTestFabricaMuebles
             plastico1 = new Plastico(0.5);
             plastico2 = new Plastico(0.5);
             plastico3 = new Plastico(1.0);
-            metal1 = new Metal(3.2, EMetal.AceroInoxidable);
-            metal2 = new Metal(3.2, EMetal.AceroInoxidable);
+            metal1 = new Metal(3.2, EMetal.Acero_Inoxidable);
+            metal2 = new Metal(3.2, EMetal.Acero_Inoxidable);
             metal3 = new Metal(1.2, EMetal.Bronze);
-            metal4 = new Metal(1.2, EMetal.AceroInoxidable);
+            metal4 = new Metal(1.2, EMetal.Acero_Inoxidable);
             #endregion
             #region Dimensiones
 

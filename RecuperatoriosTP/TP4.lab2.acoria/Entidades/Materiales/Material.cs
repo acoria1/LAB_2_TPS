@@ -36,6 +36,14 @@ namespace Entidades
             this.SetearPeso(peso);
         }
 
+        public static T buildMaterial<T> (T m) where T : Material,new()
+        {
+            T miMaterial = new T();
+            miMaterial.PesoEnKG = m.pesoEnKG;
+            return miMaterial;
+        }
+
+
         /// <summary>
         /// Propiedad publica para Serializar el objeto. Setea o devuelve el peso.
         /// </summary>

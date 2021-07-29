@@ -42,7 +42,7 @@ namespace FormularioFabrica
         {
             foreach (var item in Enum.GetValues(enumType))
             {
-                this.cmbMaterialDetalle.Items.Add(item.ToString());
+                this.cmbMaterialDetalle.Items.Add(item.ToString().Replace('_',' '));
             }
             this.cmbMaterialDetalle.SelectedIndex = 0;
             this.cmbMaterialDetalle.Visible = true;
@@ -84,7 +84,7 @@ namespace FormularioFabrica
                         this.ultimoMaterial = new Madera(peso, (EMadera)Enum.Parse(typeof(EMadera), this.cmbMaterialDetalle.Text));
                         break;
                     case "Metal":
-                        this.ultimoMaterial = new Metal(peso,(EMetal) Enum.Parse(typeof(EMetal), this.cmbMaterialDetalle.Text));
+                        this.ultimoMaterial = new Metal(peso,(EMetal) Enum.Parse(typeof(EMetal), this.cmbMaterialDetalle.Text.Replace(' ','_')));
                         break;
                     case "Plastico":
                         this.ultimoMaterial = new Plastico(peso);
@@ -134,7 +134,7 @@ namespace FormularioFabrica
             this.rtbDetalleMateriales.Text = string.Empty;
             foreach (Material item in this.materialesPorAgregar)
             {
-                this.rtbDetalleMateriales.Text += $"{(item.Key).PadRight(25, ' ')} {item.PesoEnKG} Kg.\n";
+                this.rtbDetalleMateriales.Text += $"{(item.Key).Replace('_',' ').PadRight(25, ' ')} {item.PesoEnKG} Kg.\n";
             }
         }
 

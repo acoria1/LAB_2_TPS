@@ -33,7 +33,7 @@ namespace Entidades.Materiales
         {
             get
             {
-                return this.tipo.ToString();
+                return this.tipo.ToString().Replace('_',' ');
             }
         }
         public override double CostoTotal

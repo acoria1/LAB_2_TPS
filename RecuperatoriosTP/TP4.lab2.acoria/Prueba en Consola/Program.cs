@@ -57,8 +57,8 @@ namespace Prueba_en_Consola
             plastico1 = new Plastico(0.5);
             plastico2 = new Plastico(3.5);
             plastico3 = new Plastico(1.0);
-            metal1 = new Metal(3, EMetal.AceroInoxidable);
-            metal2 = new Metal(2, EMetal.AceroInoxidable);
+            metal1 = new Metal(3, EMetal.Acero_Inoxidable);
+            metal2 = new Metal(2, EMetal.Acero_Inoxidable);
             metal3 = new Metal(10, EMetal.Bronze);
             metal4 = new Metal(3, EMetal.Hierro);
             tela1 = new Tela(3);
@@ -76,7 +76,7 @@ namespace Prueba_en_Consola
             vidrioFabrica4 = new Vidrio(10, EVidrio.Impreso);
             vidrioFabrica5 = new Vidrio(10, EVidrio.Traslucido);
 
-            metalFabrica1 = new Metal(10, EMetal.AceroInoxidable);
+            metalFabrica1 = new Metal(10, EMetal.Acero_Inoxidable);
             metalFabrica2 = new Metal(10, EMetal.Bronze);
             metalFabrica3 = new Metal(10, EMetal.Hierro);
 
@@ -109,7 +109,7 @@ namespace Prueba_en_Consola
             #region Colores
 
             colores1 = new EColor[] { EColor.Natural, EColor.Negro, EColor.Rojo };
-            colores2 = new EColor[] { EColor.Marron, EColor.Natural ,EColor.Blanco, EColor.GrisClaro};
+            colores2 = new EColor[] { EColor.Marron, EColor.Natural ,EColor.Blanco, EColor.Gris_Claro};
             #endregion
             #region Mesas
 

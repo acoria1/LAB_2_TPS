@@ -17,6 +17,13 @@ namespace Entidades
         public event ComenzoProduccion comenzoProduccionDeMueble;
         public event TerminoProduccion terminoProduccionDeMueble;
         Mueble currentMueble;
+
+        /// <summary>
+        /// Simula la fabricación de muebles
+        // Constantemente estará fijandose si existe un item en la queue de mi fábrica.
+        // de ser así llamará a los eventos de comienzo de producción, esperará, y avisará que terminó la producción.
+        /// </summary>
+        /// <param name="parameters"></param>
         public void SimularFabricacion(object parameters)
         {
             if (parameters.GetType() == typeof(ConcurrentQueue<Mueble>))

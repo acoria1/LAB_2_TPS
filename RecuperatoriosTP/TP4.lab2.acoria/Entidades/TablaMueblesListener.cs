@@ -18,6 +18,12 @@ namespace Entidades
         {
             this.cantidadMuebles = MuebleDAO.GetCountMuebles();
         }
+
+        /// <summary>
+        /// "Escuchará" a la base de datos para saber si se produjo algún cambio.
+        /// En este ejemplo, al no existir deletes ni updates desde los formularios hago un count de los registros.
+        /// Probablemente sería mejor usar un trigger :p
+        /// </summary>
         public void DataBaseListener()
         {
             while (true)

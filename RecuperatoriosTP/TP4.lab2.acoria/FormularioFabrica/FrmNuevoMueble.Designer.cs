@@ -156,7 +156,7 @@ namespace FormularioFabrica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 612);
+            this.ClientSize = new System.Drawing.Size(425, 612);
             this.Controls.Add(this.lblTipo);
             this.Controls.Add(this.cmbTipoMueble);
             this.Controls.Add(this.nudCantidad);
@@ -168,8 +168,8 @@ namespace FormularioFabrica
             this.Controls.Add(this.rtxtDetalleModelo);
             this.Controls.Add(this.cmbModelo);
             this.Name = "FrmNuevoMueble";
-            this.Text = "FrmNuevoMueble";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmNuevoMueble_FormClosing);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Fabricar Muebles";
             this.Load += new System.EventHandler(this.FrmNuevoMueble_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             this.ResumeLayout(false);

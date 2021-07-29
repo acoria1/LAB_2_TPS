@@ -10,3 +10,9 @@ C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4_Fabrica de Muebles\Entidades\o
 C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4_Fabrica de Muebles\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4_Fabrica de Muebles\Entidades\obj\Debug\Entidades.dll
 C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4_Fabrica de Muebles\Entidades\obj\Debug\Entidades.pdb
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\Entidades\bin\Debug\Entidades.dll
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\Entidades\bin\Debug\Entidades.pdb
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\Entidades\obj\Debug\Entidades.dll
+C:\Users\agusi\Desktop\UTN\LAB 2\source\repos\TP4.lab2.acoria\Entidades\obj\Debug\Entidades.pdb

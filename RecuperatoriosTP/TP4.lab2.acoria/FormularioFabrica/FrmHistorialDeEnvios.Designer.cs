@@ -30,31 +30,34 @@ namespace FormularioFabrica
         private void InitializeComponent()
         {
             this.btnOrdenar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvHistorialEnvios = new System.Windows.Forms.DataGridView();
             this.cmbOrderBy = new System.Windows.Forms.ComboBox();
             this.cmbOrderType = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lblCriterio = new System.Windows.Forms.Label();
+            this.lblOrdenamiento = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialEnvios)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOrdenar
             // 
-            this.btnOrdenar.Location = new System.Drawing.Point(448, 21);
+            this.btnOrdenar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnOrdenar.Location = new System.Drawing.Point(630, 16);
             this.btnOrdenar.Name = "btnOrdenar";
-            this.btnOrdenar.Size = new System.Drawing.Size(228, 54);
+            this.btnOrdenar.Size = new System.Drawing.Size(293, 45);
             this.btnOrdenar.TabIndex = 1;
             this.btnOrdenar.Text = "Ordenar";
             this.btnOrdenar.UseVisualStyleBackColor = true;
             this.btnOrdenar.Click += new System.EventHandler(this.btnOrdenar_Click);
             // 
-            // dataGridView1
+            // dgvHistorialEnvios
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 96);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(942, 374);
-            this.dataGridView1.TabIndex = 3;
+            this.dgvHistorialEnvios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHistorialEnvios.Location = new System.Drawing.Point(12, 87);
+            this.dgvHistorialEnvios.Name = "dgvHistorialEnvios";
+            this.dgvHistorialEnvios.RowHeadersWidth = 51;
+            this.dgvHistorialEnvios.RowTemplate.Height = 24;
+            this.dgvHistorialEnvios.Size = new System.Drawing.Size(1320, 451);
+            this.dgvHistorialEnvios.TabIndex = 3;
             // 
             // cmbOrderBy
             // 
@@ -62,7 +65,7 @@ namespace FormularioFabrica
             this.cmbOrderBy.FormattingEnabled = true;
             this.cmbOrderBy.Location = new System.Drawing.Point(12, 37);
             this.cmbOrderBy.Name = "cmbOrderBy";
-            this.cmbOrderBy.Size = new System.Drawing.Size(169, 24);
+            this.cmbOrderBy.Size = new System.Drawing.Size(246, 24);
             this.cmbOrderBy.TabIndex = 4;
             // 
             // cmbOrderType
@@ -70,35 +73,62 @@ namespace FormularioFabrica
             this.cmbOrderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOrderType.FormattingEnabled = true;
             this.cmbOrderType.Items.AddRange(new object[] {
-            "Ascending",
-            "Descending"});
-            this.cmbOrderType.Location = new System.Drawing.Point(232, 37);
+            "Ascendiente",
+            "Descendiente"});
+            this.cmbOrderType.Location = new System.Drawing.Point(324, 37);
             this.cmbOrderType.Name = "cmbOrderType";
-            this.cmbOrderType.Size = new System.Drawing.Size(171, 24);
+            this.cmbOrderType.Size = new System.Drawing.Size(246, 24);
             this.cmbOrderType.TabIndex = 5;
+            this.cmbOrderType.SelectedIndexChanged += new System.EventHandler(this.cmbOrderType_SelectedIndexChanged);
+            // 
+            // lblCriterio
+            // 
+            this.lblCriterio.AutoSize = true;
+            this.lblCriterio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.lblCriterio.Location = new System.Drawing.Point(12, 16);
+            this.lblCriterio.Name = "lblCriterio";
+            this.lblCriterio.Size = new System.Drawing.Size(60, 18);
+            this.lblCriterio.TabIndex = 6;
+            this.lblCriterio.Text = "Criterio ";
+            // 
+            // lblOrdenamiento
+            // 
+            this.lblOrdenamiento.AutoSize = true;
+            this.lblOrdenamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.lblOrdenamiento.Location = new System.Drawing.Point(321, 16);
+            this.lblOrdenamiento.Name = "lblOrdenamiento";
+            this.lblOrdenamiento.Size = new System.Drawing.Size(49, 18);
+            this.lblOrdenamiento.TabIndex = 7;
+            this.lblOrdenamiento.Text = "Orden";
             // 
             // FrmHistorialDeEnvios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1234, 550);
+            this.ClientSize = new System.Drawing.Size(1344, 550);
+            this.Controls.Add(this.lblOrdenamiento);
+            this.Controls.Add(this.lblCriterio);
             this.Controls.Add(this.cmbOrderType);
             this.Controls.Add(this.cmbOrderBy);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvHistorialEnvios);
             this.Controls.Add(this.btnOrdenar);
             this.Name = "FrmHistorialDeEnvios";
-            this.Text = "FrmHistorialDeEnvios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Historial de Envíos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmHistorialDeEnvios_FormClosing);
             this.Load += new System.EventHandler(this.FrmHistorialDeEnvios_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialEnvios)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button btnOrdenar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvHistorialEnvios;
         private System.Windows.Forms.ComboBox cmbOrderBy;
         private System.Windows.Forms.ComboBox cmbOrderType;
+        private System.Windows.Forms.Label lblCriterio;
+        private System.Windows.Forms.Label lblOrdenamiento;
     }
 }

@@ -185,7 +185,7 @@ namespace FormularioFabrica
             // 
             this.lblColoresModelo.AutoSize = true;
             this.lblColoresModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColoresModelo.Location = new System.Drawing.Point(559, 12);
+            this.lblColoresModelo.Location = new System.Drawing.Point(525, 14);
             this.lblColoresModelo.Name = "lblColoresModelo";
             this.lblColoresModelo.Size = new System.Drawing.Size(142, 18);
             this.lblColoresModelo.TabIndex = 4;
@@ -227,7 +227,7 @@ namespace FormularioFabrica
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(288, 687);
+            this.btnGuardar.Location = new System.Drawing.Point(301, 602);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(207, 51);
             this.btnGuardar.TabIndex = 15;
@@ -237,7 +237,7 @@ namespace FormularioFabrica
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(520, 687);
+            this.btnCancelar.Location = new System.Drawing.Point(528, 602);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(203, 51);
             this.btnCancelar.TabIndex = 16;
@@ -314,7 +314,7 @@ namespace FormularioFabrica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 750);
+            this.ClientSize = new System.Drawing.Size(747, 665);
             this.Controls.Add(this.rtbMaterialesDetalle2);
             this.Controls.Add(this.btnBorrarMateriales);
             this.Controls.Add(this.cmbClaseDeMueble);
@@ -334,6 +334,7 @@ namespace FormularioFabrica
             this.Controls.Add(this.lblColoresModelo);
             this.Controls.Add(this.lblDescripcion);
             this.Name = "FrmNuevoModelo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Modelo";
             this.Load += new System.EventHandler(this.AM_Modelos_Load);
             this.groupBox1.ResumeLayout(false);

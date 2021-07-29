@@ -156,7 +156,7 @@ namespace FormularioFabrica
             // 
             // btnNewModelo
             // 
-            this.btnNewModelo.Location = new System.Drawing.Point(181, 641);
+            this.btnNewModelo.Location = new System.Drawing.Point(13, 641);
             this.btnNewModelo.Name = "btnNewModelo";
             this.btnNewModelo.Size = new System.Drawing.Size(195, 55);
             this.btnNewModelo.TabIndex = 3;
@@ -166,7 +166,7 @@ namespace FormularioFabrica
             // 
             // btnDeleteModelo
             // 
-            this.btnDeleteModelo.Location = new System.Drawing.Point(489, 645);
+            this.btnDeleteModelo.Location = new System.Drawing.Point(237, 643);
             this.btnDeleteModelo.Name = "btnDeleteModelo";
             this.btnDeleteModelo.Size = new System.Drawing.Size(258, 51);
             this.btnDeleteModelo.TabIndex = 4;
@@ -261,11 +261,11 @@ namespace FormularioFabrica
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(912, 641);
+            this.btnSalir.Location = new System.Drawing.Point(777, 641);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(204, 55);
+            this.btnSalir.Size = new System.Drawing.Size(330, 55);
             this.btnSalir.TabIndex = 12;
-            this.btnSalir.Text = "Guardar y Salir";
+            this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
@@ -322,7 +322,9 @@ namespace FormularioFabrica
             this.Controls.Add(this.rtxtMatModelo);
             this.Controls.Add(this.dgvModelos);
             this.Name = "FrmModelos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modelos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmModelos_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgvModelos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceModelos)).EndInit();
             this.ResumeLayout(false);

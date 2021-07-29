@@ -101,6 +101,14 @@ namespace FormularioFabrica
             {
                 this.bindingSourceModelos.Add(frmNuevoModelo.Modelo);
                 this.miFabrica = this.miFabrica + frmNuevoModelo.Modelo;
+                try
+                {
+                    ModeloDAO.Insert(frmNuevoModelo.Modelo);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error al intentar guardar modelo");
+                }     
             }
         }
 
@@ -122,7 +130,6 @@ namespace FormularioFabrica
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -178,6 +185,11 @@ namespace FormularioFabrica
             {
                 this.rbtnTodos.Checked = true;
             }
+        }
+
+        private void FrmModelos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

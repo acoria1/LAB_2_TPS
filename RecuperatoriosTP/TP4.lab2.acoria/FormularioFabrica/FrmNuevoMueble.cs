@@ -14,12 +14,12 @@ using System.Threading;
 
 namespace FormularioFabrica
 {
-    public delegate void FabriqueNuevoMueble(Mueble m);
+    public delegate void FabriqueNuevosMuebles(Mueble m, short cantidad);
     public delegate void AvisoFormClosing();
     public partial class FrmNuevoMueble : Form
     {
         List<Modelo> modelosDisponibles;
-        public event FabriqueNuevoMueble fabriqueNuevoMueble;
+        public event FabriqueNuevosMuebles fabriqueNuevosMuebles;
         public event AvisoFormClosing avisoFormClosing;
         Modelo currentModel;
         public FrmNuevoMueble(List<Modelo> modelosDeFabrica)
@@ -33,6 +33,11 @@ namespace FormularioFabrica
             this.cmbTipoMueble.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Actualiza los modelos disponibles cuando se selecciona una clase de modelo.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbTipoMueble_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.cmbModelo.Items.Clear();
@@ -71,6 +76,11 @@ namespace FormularioFabrica
             this.cmbModelo.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Muestra los detalles del modelo seleccionado por combobox en un rich textbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbModelo_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.cmbColor.Items.Clear();
@@ -80,7 +90,7 @@ namespace FormularioFabrica
                 {
                     foreach (EColor color in item.coloresDisponibles)
                     {
-                        this.cmbColor.Items.Add(color.ToString());
+                        this.cmbColor.Items.Add(color.ToString().Replace('_', ' '));
                     }
                     this.rtxtDetalleModelo.Text = item.Mostrar();
                     this.currentModel = item;
@@ -91,16 +101,10 @@ namespace FormularioFabrica
 
         private void btnFabricar_Click(object sender, EventArgs e)
         {           
-            for (int i = 0; i < this.nudCantidad.Value; i++)
-            {
-                Mueble m = new Mueble(this.currentModel, DateTime.Now, (EColor)Enum.Parse(typeof(EColor), this.cmbColor.Text));
-                this.fabriqueNuevoMueble.Invoke(m);
-            }
-        }
-
-        private void FrmNuevoMueble_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
+            Mueble m = new Mueble(this.currentModel, DateTime.Now, (EColor)Enum.Parse(typeof(EColor), this.cmbColor.Text.Replace(' ', '_')));
+            this.btnFabricar.Enabled = false;
+            this.fabriqueNuevosMuebles.Invoke(m, (short)this.nudCantidad.Value);
+            this.btnFabricar.Enabled = true;
         }
 
         public void ShowDialogNoReturn()

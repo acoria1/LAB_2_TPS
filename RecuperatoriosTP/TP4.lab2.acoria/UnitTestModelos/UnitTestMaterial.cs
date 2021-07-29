@@ -39,10 +39,10 @@ namespace UnitTestFabricaMuebles
             plastico1 = new Plastico(0.5);
             plastico2 = new Plastico(0.5);
             plastico3 = new Plastico(1.0);
-            metal1 = new Metal(3.2, EMetal.AceroInoxidable);
-            metal2 = new Metal(3.2, EMetal.AceroInoxidable);
+            metal1 = new Metal(3.2, EMetal.Acero_Inoxidable);
+            metal2 = new Metal(3.2, EMetal.Acero_Inoxidable);
             metal3 = new Metal(1.2, EMetal.Bronze);
-            metal4 = new Metal(1.2, EMetal.AceroInoxidable);
+            metal4 = new Metal(1.2, EMetal.Acero_Inoxidable);
 
             materiales1 = new List<Material>();
             materiales2 = new List<Material>();
@@ -169,6 +169,16 @@ namespace UnitTestFabricaMuebles
             // lista 2 contenida en lista 1
             sonIguales = Modelo.TienenMismosMateriales(materiales1, materiales4);
             Assert.IsFalse(sonIguales);
+        }
+
+        [TestMethod]
+        public void TestBuildMaterial()
+        {
+            Ceramica miCeramica = Material.buildMaterial<Ceramica>(ceramica3);
+            Assert.IsTrue(miCeramica.PesoEnKG == 1);
+            miCeramica.AgregarPeso(2);
+            Assert.IsTrue(miCeramica.PesoEnKG == 3);
+            Assert.IsTrue(ceramica3.PesoEnKG == 1);
         }
     }
 }

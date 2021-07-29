@@ -9,6 +9,7 @@ using Entidades.Muebles;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections.Concurrent;
+using Entidades.Materiales;
 
 namespace Entidades
 {
@@ -34,6 +35,21 @@ namespace Entidades
         #endregion
         #region Propiedades
 
+        public Modelo this[string identificador]
+        {
+            get
+            {
+                Modelo modeloRetorno = null;
+                foreach (KeyValuePair<string, Modelo> item in this.modelosDisponibles)
+                {
+                    if (item.Key == identificador)
+                    {
+                        modeloRetorno = item.Value;
+                    }
+                }
+                return modeloRetorno;
+            }
+        }
         #endregion
         #region Operaciones con materiales
         /// <summary>
@@ -93,7 +109,8 @@ namespace Entidades
         {
             bool sePudoGastar = false;
             Material materialExistente;
-            if (fabrica.PuedeGastarMaterial(material))
+            double diferencia;
+            if (fabrica.PuedeGastarMaterial(material, out diferencia)) 
             {
                 fabrica.stockMateriales.TryGetValue(material.Key, out materialExistente);
                 materialExistente.Gastar(material.PesoEnKG);
@@ -275,21 +292,6 @@ namespace Entidades
             return sb.ToString();
         }
 
-        public Modelo this[string identificador]
-        {
-            get
-            {
-                Modelo modeloRetorno = null;
-                foreach (KeyValuePair<string,Modelo> item in this.modelosDisponibles)
-                {
-                    if (item.Key == identificador)
-                    {
-                        modeloRetorno = item.Value;
-                    }
-                }
-                return modeloRetorno;
-            }
-        }
 
         /// <summary>
         /// Devuelve el peso de un material en mi fabrica, devuelve 0 si no existe o si es 0
@@ -311,20 +313,23 @@ namespace Entidades
             return peso;
         }
 
-        /// <summary>
-        /// Informa con TRUE si se puede gastar el material ingresado
-        /// </summary>
-        /// <param name="material"> material a gastar</param>
-        /// <returns></returns>
-        public bool PuedeGastarMaterial (Material material)
+/// <summary>
+/// 
+/// </summary>
+/// <param name="material"></param>
+/// <param name="cantidadNecesaria">devuelve como out la diferencia de peso necesaria si no se puede gastar</param>
+/// <returns></returns>
+        public bool PuedeGastarMaterial (Material material, out double cantidadNecesaria)
         {
             bool sePuedeGastar = false;
             Material materialExistente;
+            cantidadNecesaria = 0;
          
             if (this == material)
             {
                 this.stockMateriales.TryGetValue(material.Key, out materialExistente);
                 sePuedeGastar = materialExistente.PuedeGastar(material.PesoEnKG);
+                cantidadNecesaria = material.PesoEnKG - materialExistente.PesoEnKG;
             }
             return sePuedeGastar;
         }
@@ -334,41 +339,93 @@ namespace Entidades
         /// queue de fabricación de mi fábrica.
         /// </summary>
         /// <param name="m"></param>
-        /// <param name="materialesSinStock"> Guarda la lista de materiales necesarios 
-        /// de los cuales no tengo stock. SON LOS MATERIALES DEL MUEBLE! </param>
         /// <returns> True si se pudo fabricar y se agrego el mueble a mi queue de fabricación</returns>
-        public bool FabricarMueble (Mueble m, out List<Material> materialesSinStock)
-        {
-            bool fabricado = false;
-            bool materialesDisponibles = true;
-            materialesSinStock = new List<Material>();
-            // SI por alguna razon se quiere fabricar un mueble con mismo codigo guid
-            if (this == m)
-            {               
-                return false;
-            }
+        public void FabricarMueble (Mueble m)
+        {                   
             if (this[m.IDModelo] != null)
             {
                 foreach (Material item in this[m.IDModelo].materialesNecesarios)
                 {
-                    //SI el material no existe en mi fábrica o no hay suficiente cantidad (peso)
-                    if (!this.PuedeGastarMaterial(item))
-                    {
-                        materialesDisponibles = false;
-                        materialesSinStock.Add(item);
-                    } 
+                    bool fabricado = this - item;
                 }
-                // si se puede gastar cada uno de los materiales, entra al IF.
-                if (materialesDisponibles == true)
+                this.mueblesEnProduccion.Enqueue(m);
+            }
+        }
+
+        /// <summary>
+        /// Me indica si puede fabricar o no un mueble.
+        /// </summary>
+        /// <param name="materialesRequeridos"></param>
+        /// <param name="materialesSinStock">lista de materiales que no tienen stock necesario</param>
+        /// <param name="pesosDiferencias">array de diferencia de pesos correspondiente a cada item de la lista.
+        /// para evitar modificar datos del item original </param>
+        /// <returns></returns>
+        public bool PuedeFabricarMueble (List<Material> materialesRequeridos, out List<Material> materialesSinStock, out double[] pesosDiferencias)
+        {
+            bool puedeFabricar = true;
+            materialesSinStock = new List<Material>();
+            double diferencia;
+            // SI por alguna razon se quiere fabricar un mueble con mismo codigo guid
+
+            foreach (Material item in materialesRequeridos)
+            {
+                //SI el material no existe en mi fábrica o no hay suficiente cantidad (peso)
+                if (!this.PuedeGastarMaterial(item, out diferencia))
                 {
-                    foreach (Material item in this[m.IDModelo].materialesNecesarios)
-                    {
-                        fabricado = this - item;
-                    }
-                    this.mueblesEnProduccion.Enqueue(m);
+                    puedeFabricar = false;
+                    item.PesoEnKG = diferencia;
+                    materialesSinStock.Add(item);                    
                 }
             }
-            return fabricado;
+            pesosDiferencias = new double[materialesSinStock.Count];
+            int i = 0;
+            foreach (Material item in materialesSinStock)
+            {
+                pesosDiferencias[i] = item.PesoEnKG;
+                i++;
+            }
+            return puedeFabricar;
+        }
+
+        /// <summary>
+        /// Fabrica muebles en cantidad. No fabrica ninguno si no puede fabricar todos
+        /// </summary>
+        /// <param name="m">mueble a fabricar</param>
+        /// <param name="cantidad">cantidad deseada del mueble a fabricar</param>
+        /// <param name="materialesSinStock">lista de materiales que no tienen stock necesario</param>
+        /// <param name="pesosDiff">array de diferencia de pesos correspondiente a cada item de la lista.
+        /// para evitar modificar datos del item original </param>
+        // 
+        /// <returns></returns>
+        public bool FabricarMueblesEnBatch(Mueble m, short cantidad, out List<Material> materialesSinStock, out double[] pesosDiff)
+        {
+            bool puedeFabricarMuebles;
+            List<Material> materialesSinStock2 = new List<Material>();
+            double[] pesosDeMateriales = new double [this[m.IDModelo].materialesNecesarios.Count];
+            int i = 0;
+            foreach (Material item in this[m.IDModelo].materialesNecesarios)
+            {
+                pesosDeMateriales[i] = item.PesoEnKG;
+                i++;
+                item.PesoEnKG = item.PesoEnKG * cantidad;
+            }
+            i = 0;
+            puedeFabricarMuebles = this.PuedeFabricarMueble(this[m.IDModelo].materialesNecesarios, out materialesSinStock2,out pesosDiff);
+            foreach (Material item in this[m.IDModelo].materialesNecesarios)
+            {
+                item.PesoEnKG = pesosDeMateriales[i];
+                i++;
+            }
+            if (puedeFabricarMuebles)
+            {
+                for (int j = 0; j < cantidad; j++)
+                {
+                    Mueble mNuevo = new Mueble(this[m.IDModelo], DateTime.Now, m.Color);
+                    this.FabricarMueble(mNuevo);
+                }             
+            }
+            materialesSinStock = materialesSinStock2;
+            return puedeFabricarMuebles;
         }
 
         /// <summary>
